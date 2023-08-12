@@ -43,8 +43,8 @@ def _squeue(jobid=None, username=getlogin(), full=False, sformat=None):    #pyli
 
             else:
                 # First, get jobids that belong to that username using
-                # squeue (-h strips the header)
-                sopt = ["squeue", "-h", "-u", username]
+                # squeue (-h strips the header, %A displays only jobid)
+                sopt = ["squeue", "-h", "-u", username, "-o", "%A"]
 
                 qsout = run(sopt)[0]
 
