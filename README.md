@@ -13,6 +13,11 @@ currently at the University of California Santa Barbara.
 - set number of nodes manually with SLURM instead of allowing the queue manager to choose the number of nodes
 - fix parsing/general support for SLURM
 
+### TODO
+- not all database entries are used, for example I don't think completiontime is ever set
+- try to speed up pstat command
+- documentation (PRISMS_JOB_SOFTWARE variable, jobstatus, taskstatus)
+
 ## Overview
 
 When submitted through the ``prisms_jobs`` Python package or the included scripts,
