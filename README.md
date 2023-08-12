@@ -8,6 +8,9 @@ This code is developed by the PRedictive Integrated Structural Materials Science
 currently at the University of California Santa Barbara.
 
 
+## Local Changes
+- add PRISMS_JOBS_SOFTWARE environment variable that can be set to 'torque' or 'slurm' in case automatic detection fails
+
 ## Overview
 
 When submitted through the ``prisms_jobs`` Python package or the included scripts,

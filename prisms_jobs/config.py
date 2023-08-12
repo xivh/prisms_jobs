@@ -32,6 +32,10 @@ def detect_software():
             * 'torque' - detected via 'qsub'
             * 'slurm' - detected via 'sbatch'
     """
+    if os.environ.get('PRISMS_JOBS_SOFTWARE') == 'torque':
+        return 'torque'
+    elif os.environ.get('PRISMS_JOBS_SOFTWARE') == 'slurm':
+        return 'slurm'
     if find_executable('qsub') is not None:
         return 'torque'
     elif find_executable('sbatch') is not None:
