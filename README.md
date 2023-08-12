@@ -10,6 +10,7 @@ currently at the University of California Santa Barbara.
 
 ## Local Changes
 - add PRISMS_JOBS_SOFTWARE environment variable that can be set to 'torque' or 'slurm' in case automatic detection fails
+- set number of nodes manually with SLURM instead of allowing the queue manager to choose the number of nodes
 
 ## Overview
 

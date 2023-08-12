@@ -120,7 +120,7 @@ def sub_string(job):
         if 'a' in job.message:
             jobstr += "#SBATCH --mail-type=FAIL\n"
     # SLURM does assignment to no. of nodes automatically
-    # jobstr += "#SBATCH -N {0}\n".format(job.nodes)
+    jobstr += "#SBATCH -N {0}\n".format(job.nodes)
     if job.queue is not None:
         jobstr += "#SBATCH -p {0}\n".format(job.queue)
     if job.constraint is not None:
