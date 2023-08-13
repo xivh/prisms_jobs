@@ -12,11 +12,16 @@ currently at the University of California Santa Barbara.
 - add PRISMS_JOBS_SOFTWARE environment variable that can be set to 'torque' or 'slurm' in case automatic detection fails
 - set number of nodes manually with SLURM instead of allowing the queue manager to choose the number of nodes
 - fix parsing/general support for SLURM
+- display time from ``pstat`` in SLURM format, DD-HH:MM:SS
 
 ### TODO
 - not all database entries are used, for example I don't think completiontime is ever set
 - try to speed up pstat command
 - documentation (PRISMS_JOB_SOFTWARE variable, jobstatus, taskstatus)
+- standardize time
+  - right now it seems like time is mostly handled internally either in seconds or in PBS format, DD:HH:MM:SS, except for where I have made changes to parsing (read days from SLURM) and printing (print ``pstat`` in SLURM format)
+  - time from calc.json cannot be in SLURM format (not sure if it reads days from PBS either, but it does read e.g. 72 hours)
+- it would be nice to use python wrappers for the queue managers instead of manually parsing everything...
 
 ## Overview
 
