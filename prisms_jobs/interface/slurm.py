@@ -125,6 +125,8 @@ def sub_string(job):
         jobstr += "#SBATCH -p {0}\n".format(job.queue)
     if job.constraint is not None:
         jobstr += "#SBATCH --constraint={0}\n".format(job.constraint)
+    if job.exclude is not None:
+        jobstr += "#SBATCH -x {0}\n".format(job.exclude)
     jobstr += "{0}\n".format(job.command)
 
     return jobstr

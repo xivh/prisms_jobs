@@ -13,6 +13,7 @@ currently at the University of California Santa Barbara.
 - set number of nodes manually with SLURM instead of allowing the queue manager to choose the number of nodes
 - fix parsing/general support for SLURM
 - display time from ``pstat`` in SLURM format, DD-HH:MM:SS
+- support excluding nodes on SLURM (also requires changes in CASMPython)
 
 ### TODO
 - not all database entries are used, for example I don't think completiontime is ever set
@@ -22,6 +23,7 @@ currently at the University of California Santa Barbara.
   - right now it seems like time is mostly handled internally either in seconds or in PBS format, DD:HH:MM:SS, except for where I have made changes to parsing (read days from SLURM) and printing (print ``pstat`` in SLURM format)
   - time from calc.json cannot be in SLURM format (not sure if it reads days from PBS either, but it does read e.g. 72 hours)
 - it would be nice to use python wrappers for the queue managers instead of manually parsing everything...
+- It seems like ``pstat --continue`` runs the ``qsubstr`` from the database, but the ``qsubstr`` calls CASMPython ``vaspwrapper``. This means that the job is initialized with the nodes, ppn, etc. from the original calc.json for SBATCH, but calc.json is read again for the actual VASP run which may cause some issues.
 
 ## Overview
 
