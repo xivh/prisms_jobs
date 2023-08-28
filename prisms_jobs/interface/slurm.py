@@ -106,7 +106,11 @@ def sub_string(job):
     if job.account is not None:
         jobstr += "#SBATCH -A {0}\n".format(job.account)
     jobstr += "#SBATCH -t {0}\n".format(job.walltime)
-    jobstr += "#SBATCH -n {0}\n".format(job.nodes*job.ppn)
+    if job.gpus is not None: # little hack for NERSC: don't use ppn...
+        jobstr += "#SBATCH --gpus={0}\n".format(job.gpus)
+        jobstr += "#SBATCH --nodes={0}\n".format(job.nodes)
+    else:
+        jobstr += "#SBATCH -n {0}\n".format(job.nodes*job.ppn)
     if job.pmem is not None:
         jobstr += "#SBATCH --mem-per-cpu={0}\n".format(job.pmem)
     if job.qos is not None:
@@ -127,8 +131,6 @@ def sub_string(job):
         jobstr += "#SBATCH --constraint={0}\n".format(job.constraint)
     if job.exclude is not None:
         jobstr += "#SBATCH -x {0}\n".format(job.exclude)
-    if job.gpus is not None:
-        jobstr += "#SBATCH --gpus={0}\n".format(job.gpus)
     jobstr += "{0}\n".format(job.command)
 
     return jobstr

@@ -15,6 +15,7 @@ currently at the University of California Santa Barbara.
 - display time from ``pstat`` in SLURM format, DD-HH:MM:SS
 - support excluding nodes on SLURM (also requires changes in CASMPython)
 - support gpus on SLURM (also requires changes in CASMPython) (vasp command string must be set manually)
+  - currently set up for NERSC perlmutter format
 
 ### TODO
 - not all database entries are used, for example I don't think completiontime is ever set
@@ -25,6 +26,8 @@ currently at the University of California Santa Barbara.
   - time from calc.json cannot be in SLURM format (not sure if it reads days from PBS either, but it does read e.g. 72 hours)
 - it would be nice to use python wrappers for the queue managers instead of manually parsing everything...
 - It seems like ``pstat --continue`` runs the ``qsubstr`` from the database, but the ``qsubstr`` calls CASMPython ``vaspwrapper``. This means that the job is initialized with the nodes, ppn, etc. from the original calc.json for SBATCH, but calc.json is read again for the actual VASP run which may cause some issues.
+- psub does not work with SLURM
+- get rid of the -n flag for slurm and just pass nodes and processors directly
 
 ## Overview
 

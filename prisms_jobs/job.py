@@ -136,7 +136,7 @@ class Job(object):  #pylint: disable=too-many-instance-attributes
         self.exclude = exclude
 
         # number of gpus to request (int)
-        self.gpus = gpus
+        self.gpus = int(gpus)
 
         # time eligible for execution
         # PBS -a exetime
