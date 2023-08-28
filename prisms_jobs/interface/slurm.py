@@ -106,9 +106,11 @@ def sub_string(job):
     if job.account is not None:
         jobstr += "#SBATCH -A {0}\n".format(job.account)
     jobstr += "#SBATCH -t {0}\n".format(job.walltime)
-    if job.gpus is not None: # little hack for NERSC: don't use ppn...
+    if job.gpus is not None: # little hack for NERSC: don't use ppn, partition...
         jobstr += "#SBATCH --gpus={0}\n".format(job.gpus)
     else:
+        if job.queue is not None:
+            jobstr += "#SBATCH -p {0}\n".format(job.queue)
         jobstr += "#SBATCH -n {0}\n".format(job.nodes*job.ppn)
     if job.pmem is not None:
         jobstr += "#SBATCH --mem-per-cpu={0}\n".format(job.pmem)
@@ -124,8 +126,6 @@ def sub_string(job):
             jobstr += "#SBATCH --mail-type=FAIL\n"
     # SLURM does assignment to no. of nodes automatically
     jobstr += "#SBATCH -N {0}\n".format(job.nodes)
-    if job.queue is not None:
-        jobstr += "#SBATCH -p {0}\n".format(job.queue)
     if job.constraint is not None:
         jobstr += "#SBATCH --constraint={0}\n".format(job.constraint)
     if job.exclude is not None:
