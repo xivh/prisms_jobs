@@ -127,6 +127,8 @@ def sub_string(job):
         jobstr += "#SBATCH --constraint={0}\n".format(job.constraint)
     if job.exclude is not None:
         jobstr += "#SBATCH -x {0}\n".format(job.exclude)
+    if job.gpus is not None:
+        jobstr += "#SBATCH --gpus={0}\n".format(job.gpus)
     jobstr += "{0}\n".format(job.command)
 
     return jobstr

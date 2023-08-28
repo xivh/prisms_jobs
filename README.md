@@ -14,6 +14,7 @@ currently at the University of California Santa Barbara.
 - fix parsing/general support for SLURM
 - display time from ``pstat`` in SLURM format, DD-HH:MM:SS
 - support excluding nodes on SLURM (also requires changes in CASMPython)
+- support gpus on SLURM (also requires changes in CASMPython) (vasp command string must be set manually)
 
 ### TODO
 - not all database entries are used, for example I don't think completiontime is ever set
