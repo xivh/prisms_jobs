@@ -108,7 +108,6 @@ def sub_string(job):
     jobstr += "#SBATCH -t {0}\n".format(job.walltime)
     if job.gpus is not None: # little hack for NERSC: don't use ppn...
         jobstr += "#SBATCH --gpus={0}\n".format(job.gpus)
-        jobstr += "#SBATCH --nodes={0}\n".format(job.nodes)
     else:
         jobstr += "#SBATCH -n {0}\n".format(job.nodes*job.ppn)
     if job.pmem is not None:
